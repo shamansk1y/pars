@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><title>Joma price scaner</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+</head>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Головна</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <body>
+    <p>На данний момент сервіс дозволяє дізнатися ціну на продукцію Joma Sport в один клік відразу на всіх наступних сайтах:
+    <li>copa.com.ua</li>
+    <li>sport-hunter.com.ua</li>
+    <li>vkorzinu.biz.ua</li>
+    <li>football-world.com.ua</li>
+    <li>playfootball.com.ua</li>
+    <li>soccer-shop.com.ua</li>
+    <li>rozetka.com.ua</li>
+    <li>epicentrk.ua</li>
+    <li>kasta.ua</li>
+    <li>eobuv.com.ua</li>
+    </p>
+        <form action="/result" method="post">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Вкажіть артикул Joma:</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="item">
+            </div>
+            <button type="submit" class="btn btn-primary">Завантажити ціни</button>
+        </form>
+    </body>
+</html>
+
+
+

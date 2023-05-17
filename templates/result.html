@@ -1,37 +1,40 @@
 <html>
 
-    <head><title>Joma price scaner - result</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-        <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
-    </head>
+<head>
+    <title>Joma price scanner - result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+</head>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary --bs-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Головна</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg bg-body-tertiary --bs-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Головна</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
 <body>
-
-<table>
-    <thead>
-    <tr>
-        <th>інтернет-магазин</th>
-        <th>актуальна ціна</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for key, value in result.items() %}
-        <tr>
-            <td>{{ key }}</td>
-            <td>{{ value }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <p>Товар який ви шукали {{ item }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>інтернет-магазин</th>
+                <th>актуальна ціна</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in result.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <a href="/">Повернутись на головну сторінку</a>
 </body>
+
 </html>

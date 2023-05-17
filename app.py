@@ -17,8 +17,10 @@ def main():
     headers = {'User-Agent': ua}
 
     chrome_driver_path = r"E:\development prog\chromedriver.exe"
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')  # Запуск в фоновом режиме
     service = Service(chrome_driver_path)
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome(service=service, options=options)
     result = {}
 
     result['copa.com.ua'] = get_copa_price(item, headers)
@@ -34,7 +36,7 @@ def main():
 
     driver.quit()
 
-    return result
+    return render_template('result.html', result=result, item=item)
 
 if __name__ == "__main__":
     app()

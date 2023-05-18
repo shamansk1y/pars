@@ -20,7 +20,8 @@ def main():
     ua = UserAgent().random
     headers = {'User-Agent': ua}
 
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(executable_path='/bin/chromedriver', options=chrome_options)
+
 
     result = {}
     result['copa.com.ua'] = get_copa_price(item, headers)

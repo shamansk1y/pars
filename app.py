@@ -2,6 +2,7 @@ from selenium import webdriver
 from fake_useragent import UserAgent
 from parsing import *
 from flask import Flask, render_template, request
+import os
 
 app = Flask(__name__)
 
@@ -20,7 +21,7 @@ def main():
     ua = UserAgent().random
     headers = {'User-Agent': ua}
 
-    driver = webdriver.Chrome(executable_path='/bin/chromedriver', options=chrome_options)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 
     result = {}

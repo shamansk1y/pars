@@ -87,13 +87,20 @@ def get_soccer_shop_price(item, headers):
     link = f'https://soccer-shop.com.ua/ua/advanced_search_result.php?keywords={item}'
     response = requests.get(link, headers=headers).text
     soup = BeautifulSoup(response, 'lxml')
-    price_element = soup.find('span', class_='price sale')
+    nostock = soup.find('span', class_='btn button_gray button_write_review')
+    if not nostock:
+        price_element = soup.find('span', class_='price sale')
 
-    if price_element:
-        price = price_element.get_text(strip=True)
-        price = price.replace('\xa0', '')
+        if price_element:
+            price = price_element.get_text(strip=True)
+            price = price.replace('\xa0', '')
+        else:
+            price = "Товар/ціну не знайдено"
     else:
-        price = "Товар/ціну не знайдено"
+        price_element = soup.find('span', class_='int')
+        last_price = price_element.get_text(strip=True)
+        last_price = last_price.replace('\xa0', '')
+        price = f"Немає в наявності, остання ціна {last_price}"
     return price
 
 def get_rozetka_price(item, driver):

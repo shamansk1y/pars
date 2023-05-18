@@ -17,7 +17,7 @@ def get_copa_price(item, headers):
             price = price_element.get_text(strip=True)
         return price
     else:
-        return "Цена не найдена"
+        return "Товар/ціну не знайдено"
 
 def get_hunter_price(item, headers):
     link = f'https://sport-hunter.com.ua/uk/index.php?route=product/search&search={item}'
@@ -32,7 +32,7 @@ def get_hunter_price(item, headers):
             price = price_element.get_text(strip=True)
         return price
     else:
-        return "Цена не найдена"
+        return "Товар/ціну не знайдено"
 
 def get_korzina_price(item, headers, driver):
     url = "https://vkorzinu.biz.ua/"
@@ -54,7 +54,7 @@ def get_korzina_price(item, headers, driver):
     if price_element:
         return price_element
     else:
-        return "Цена не найдена"
+        return "Товар/ціну не знайдено"
 
 def get_korzina_2_price(item, headers):
     link = f'https://football-world.com.ua/ru/search?search={item}'
@@ -68,7 +68,7 @@ def get_korzina_2_price(item, headers):
     elif price_element_2:
         price = price_element_2.get_text(strip=True)
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price
 
 def get_playfootball_price(item, headers):
@@ -80,7 +80,7 @@ def get_playfootball_price(item, headers):
     if price_element:
         price = price_element.get_text(strip=True)
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price
 
 def get_soccer_shop_price(item, headers):
@@ -93,7 +93,7 @@ def get_soccer_shop_price(item, headers):
         price = price_element.get_text(strip=True)
         price = price.replace('\xa0', '')
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price
 
 def get_rozetka_price(item, driver):
@@ -107,7 +107,7 @@ def get_rozetka_price(item, driver):
         price = price_element.get_text(strip=True)
         price = price.replace('\xa0', '')
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price
 
 
@@ -119,7 +119,7 @@ def get_epic_price(item, headers):
     if price_element:
         price = price_element.get_text(strip=True)
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price
 
 
@@ -132,7 +132,7 @@ def get_kasta_price(item, headers):
         string = price_element.get_text(strip=True)
         price = string.encode('latin-1').decode('utf-8')
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price
 
 
@@ -145,5 +145,5 @@ def get_eobuv_price(item, headers):
         string = price_element.get_text(strip=True)
         price = string.replace('\xa0', ' ').strip()
     else:
-        price = "Цена не найдена"
+        price = "Товар/ціну не знайдено"
     return price

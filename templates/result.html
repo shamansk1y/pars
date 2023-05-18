@@ -16,25 +16,27 @@
 </nav>
 
 <body>
-    <p>Товар який ви шукали {{ item }}</p>
-    <table>
-        <thead>
-            <tr>
-                <th>інтернет-магазин</th>
-                <th>актуальна ціна</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for key, value in result.items() %}
-            <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container text-center">
+        <h2>Товар який ви шукали {{ item }}</h2>
+        <table class="mx-auto">
+            <thead>
+                <tr>
+                    <th><h4>Iнтернет-магазин</h4></th>
+                    <th><h4>Aктуальна ціна</h4></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in result.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="/">Повернутись на головну сторінку</a>
+        <a href="/">Повернутись на головну сторінку</a>
+    </div>
 </body>
 
 </html>

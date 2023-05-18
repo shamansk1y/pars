@@ -1,14 +1,15 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from fake_useragent import UserAgent
 from parsing import *
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/result', methods=['POST'])
 def main():
@@ -16,13 +17,14 @@ def main():
     ua = UserAgent().random
     headers = {'User-Agent': ua}
 
-    chrome_driver_path = r"E:\development prog\chromedriver.exe"
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')  # Запуск в фоновом режиме
-    service = Service(chrome_driver_path)
-    driver = webdriver.Chrome(service=service, options=options)
-    result = {}
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--no-sandbox')
 
+    driver = webdriver.Chrome(options=chrome_options)
+
+    result = {}
     result['copa.com.ua'] = get_copa_price(item, headers)
     result['sport-hunter.com.ua'] = get_hunter_price(item, headers)
     result['vkorzinu.biz.ua'] = get_korzina_price(item, headers, driver)
@@ -38,5 +40,6 @@ def main():
 
     return render_template('result.html', result=result, item=item)
 
+
 if __name__ == "__main__":
-    app()
+    app.run()

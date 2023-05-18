@@ -22,14 +22,15 @@ def main():
     ua = UserAgent().random
     headers = {'User-Agent': ua}
 
+    # local config
     # chrome_driver_path = r"E:\development prog\chromedriver.exe"
     # options = webdriver.ChromeOptions()
     # options.add_argument('--headless')
     # service = Service(chrome_driver_path)
     # driver = webdriver.Chrome(service=service, options=options)
 
+    # deploy config
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-
 
     result = {}
     result['copa.com.ua'] = get_copa_price(item, headers)

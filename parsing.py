@@ -46,16 +46,17 @@ def get_korzina_price(item, headers, driver):
 
     soup = BeautifulSoup(page_source, "html.parser")
     first_result_link = soup.select_one("dl.search-results > dt.result-title > a")
-
-    href = first_result_link["href"]
-    response = requests.get(href, headers=headers).text
-    soup = BeautifulSoup(response, "html.parser")
-    price_element = soup.find_all("span", class_="hikashop_product_price hikashop_product_price_0 hikashop_product_price_with_discount")[1].text
-    if price_element:
-        return price_element
+    if first_result_link is not None:
+        href = first_result_link["href"]
+        response = requests.get(href, headers=headers).text
+        soup = BeautifulSoup(response, "html.parser")
+        price_element = soup.find_all("span", class_="hikashop_product_price hikashop_product_price_0 hikashop_product_price_with_discount")[1].text
+        if price_element:
+            return price_element
+        else:
+            return "Товар/ціну не знайдено"
     else:
         return "Товар/ціну не знайдено"
-
 def get_korzina_2_price(item, headers):
     link = f'https://football-world.com.ua/ru/search?search={item}'
     response = requests.get(link, headers=headers).text
